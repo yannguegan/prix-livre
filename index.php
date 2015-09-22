@@ -17,91 +17,168 @@
     <script type="text/javascript" src="js/jquery.svg.js"></script>
     <script type="text/javascript" src="js/jquery.svgdom.js"></script>
     <script type="text/javascript" src="js/jquery.viewport.mini.js"></script>
-   -->
-    
+   -->   
 
   </head>
   <body>
     <header>
     </header>   
-    <article style="width:766px; border: 1px solid pink;">
-    <script id="handlebars_template_1" type="text/x-handlebars-template">
-                {{#each feed}}
-                 {{#if auteur}}
-                 <div class="entry_book poche_{{{paru_poche}}}" id="{{{id}}}" diff_poche="{{{diff_poche}}}" diff_broche="{{{diff_broche}}}">
-                    <div class="left">
-                       <div class="bar bar_left" ></div>
-                       <div class="book_info"> 
-                         <div class="left_info">
-                           <div class="author">{{{auteur}}}</div>
-                           <div class="title show_more">Livre&nbsp;: <span>{{{titre}}}</span> </div>   
-                         </div>  
-                         <div class="more transition_height">
-                             <div class="prices">
-                              <div>
-                                Original ({{{editeur_broche}}})<br />
-                                Poche ({{{editeur_poche}}})<br />
-                                iBook<br />
-                                Kindle<br />
-                                Diff. ebook / original<br /> 
-                                Diff. ebook / poche<br />                                 
-                              </div>
-                              <div>
-                                {{{prix_broche}}}&nbsp;€<br />
-                                {{{prix_poche}}}&nbsp;€<br />
-                                {{{prix_elec_apple}}}&nbsp;€<br />
-                                {{{prix_elec_amazon}}}&nbsp;€<br />
-                                {{{diff_broche_100}}}&nbsp;%<br />
-                                {{{diff_poche_100}}}&nbsp;%
-                              </div> 
-                             </div>
-                           </div> 
-                       </div>
-                    </div>
-                    <div class="middle">
-                      <div class="author_img">
-                      <img src="img/beigbeder.jpg">
-                      </div>
-                    </div>
-                    <div class="right">
-                       <div class="bar bar_right" ></div>
-                       <div class="book_info"> 
-                         <div class="right_info">
-                           <div class="author">{{{auteur}}}</div>
-                           <div class="title show_more">Livre&nbsp;: <span>{{{titre}}}</span> </div>   
-                         </div>  
-                         <div class="more transition_height">
-                             <div class="prices">
-                              <div>
-                                Original ({{{editeur_broche}}})<br />
-                                Poche ({{{editeur_poche}}})<br />
-                                iBook<br />
-                                Kindle<br />
-                                Diff. ebook / original<br /> 
-                                Diff. ebook / poche<br />                                 
-                              </div>
-                              <div>
-                                {{{prix_broche}}}&nbsp;€<br />
-                                {{{prix_poche}}}&nbsp;€<br />
-                                {{{prix_elec_apple}}}&nbsp;€<br />
-                                {{{prix_elec_amazon}}}&nbsp;€<br />
-                                {{{diff_broche_100}}}&nbsp;%<br />
-                                {{{diff_poche_100}}}&nbsp;%
-                              </div> 
-                             </div>
-                           </div> 
-                       </div>
-                    </div>
-                    <div class="diff"><div></div></div>
-                 </div>
-                  
-                {{/if}}
-               {{/each}}
-    </script>
-
+    <article style="width:766px;"> 
+      <section id="ebook_vs_poche">  
+        <h2>Les prix des ebooks comparés au prix des poches</h2>  
+      </section>
+      <section id="ebook_vs_broche">
+        <h2>Les prix des ebooks comparés au prix des éditions originales</h2>  
+      </section> 
     </article>
     <footer>
-    </footer>  
+    </footer>
+    <script id="handlebars_template_1" type="text/x-handlebars-template">
+            {{#each feed}}
+             {{#if auteur}}
+             <div class="entry_book poche_{{{paru_poche}}}" id="{{{id}}}" diff_poche="{{{diff_poche}}}" diff_broche="{{{diff_broche}}}">
+                <div class="left">
+                   <div class="bar bar_left" ></div>
+                   <div class="book_info"> 
+                     <div class="left_info">
+                       <div class="author">{{{auteur}}}</div>
+                       <div class="title show_more">Livre&nbsp;: <span>{{{titre}}}</span> </div>   
+                     </div>  
+                     <div class="more transition_height">
+                         <div class="prices">
+                          <div>
+                            Original ({{{editeur_broche}}})<br />
+                            Poche ({{{editeur_poche}}})<br />
+                            iBook<br />
+                            Kindle<br />
+                            Diff. ebook / original<br /> 
+                            Diff. ebook / poche<br />                                 
+                          </div>
+                          <div>
+                            {{{prix_broche}}}&nbsp;€<br />
+                            {{{prix_poche}}}&nbsp;€<br />
+                            {{{prix_elec_apple}}}&nbsp;€<br />
+                            {{{prix_elec_amazon}}}&nbsp;€<br />
+                            {{{diff_broche_100}}}&nbsp;%<br />
+                            {{{diff_poche_100}}}&nbsp;%
+                          </div> 
+                         </div>
+                       </div> 
+                   </div>
+                </div>
+                <div class="middle">
+                  <div class="author_img">
+                  <img src="img/beigbeder.jpg">
+                  </div>
+                </div>
+                <div class="right">
+                   <div class="bar bar_right" ></div>
+                   <div class="book_info"> 
+                     <div class="right_info">
+                       <div class="author">{{{auteur}}}</div>
+                       <div class="title show_more">Livre&nbsp;: <span>{{{titre}}}</span> </div>   
+                     </div>  
+                     <div class="more transition_height">
+                         <div class="prices">
+                          <div>
+                            Original ({{{editeur_broche}}})<br />
+                            Poche ({{{editeur_poche}}})<br />
+                            iBook<br />
+                            Kindle<br />
+                            Diff. ebook / original<br /> 
+                            Diff. ebook / poche<br />                                 
+                          </div>
+                          <div>
+                            {{{prix_broche}}}&nbsp;€<br />
+                            {{{prix_poche}}}&nbsp;€<br />
+                            {{{prix_elec_apple}}}&nbsp;€<br />
+                            {{{prix_elec_amazon}}}&nbsp;€<br />
+                            {{{diff_broche_100}}}&nbsp;%<br />
+                            {{{diff_poche_100}}}&nbsp;%
+                          </div> 
+                         </div>
+                       </div> 
+                   </div>
+                </div>
+                <div class="diff diff_grey"><div></div></div>
+             </div>
+              
+            {{/if}}
+           {{/each}}
+    </script>
+    <script id="handlebars_template_2" type="text/x-handlebars-template">
+          {{#each_by_diff_broch feed}}
+           {{#if auteur}}
+           <div class="entry_book poche_{{{paru_poche}}}" id="{{{id}}}" diff_poche="{{{diff_poche}}}" diff_broche="{{{diff_broche}}}">
+              <div class="left">
+                 <div class="bar bar_left" ></div>
+                 <div class="book_info"> 
+                   <div class="left_info">
+                     <div class="author">{{{auteur}}}</div>
+                     <div class="title show_more">Livre&nbsp;: <span>{{{titre}}}</span> </div>   
+                   </div>  
+                   <div class="more transition_height">
+                       <div class="prices">
+                        <div>
+                          Original ({{{editeur_broche}}})<br />
+                          Poche ({{{editeur_poche}}})<br />
+                          iBook<br />
+                          Kindle<br />
+                          Diff. ebook / original<br /> 
+                          Diff. ebook / poche<br />                                 
+                        </div>
+                        <div>
+                          {{{prix_broche}}}&nbsp;€<br />
+                          {{{prix_poche}}}&nbsp;€<br />
+                          {{{prix_elec_apple}}}&nbsp;€<br />
+                          {{{prix_elec_amazon}}}&nbsp;€<br />
+                          {{{diff_broche_100}}}&nbsp;%<br />
+                          {{{diff_poche_100}}}&nbsp;%
+                        </div> 
+                       </div>
+                     </div> 
+                 </div>
+              </div>
+              <div class="middle">
+                <div class="author_img">
+                <img src="img/beigbeder.jpg">
+                </div>
+              </div>
+              <div class="right">
+                 <div class="bar bar_right" ></div>
+                 <div class="book_info"> 
+                   <div class="right_info">
+                     <div class="author">{{{auteur}}}</div>
+                     <div class="title show_more">Livre&nbsp;: <span>{{{titre}}}</span> </div>   
+                   </div>  
+                   <div class="more transition_height">
+                       <div class="prices">
+                        <div>
+                          Original ({{{editeur_broche}}})<br />
+                          Poche ({{{editeur_poche}}})<br />
+                          iBook<br />
+                          Kindle<br />
+                          Diff. ebook / original<br /> 
+                          Diff. ebook / poche<br />                                 
+                        </div>
+                        <div>
+                          {{{prix_broche}}}&nbsp;€<br />
+                          {{{prix_poche}}}&nbsp;€<br />
+                          {{{prix_elec_apple}}}&nbsp;€<br />
+                          {{{prix_elec_amazon}}}&nbsp;€<br />
+                          {{{diff_broche_100}}}&nbsp;%<br />
+                          {{{diff_poche_100}}}&nbsp;%
+                        </div> 
+                       </div>
+                     </div> 
+                 </div>
+              </div>
+              <div class="diff diff_grey"><div></div></div>
+           </div>
+            
+          {{/if}}
+         {{/each_by_diff_broch}}
+    </script>    
     <script type="text/javascript" src="js/script.js"></script>
   </body>
 </html>

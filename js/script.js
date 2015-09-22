@@ -9,30 +9,101 @@ function showInfo() {
     var source1 = $('#handlebars_template_1').html();    
     var template1 = Handlebars.compile(source1);
     var html1 = template1(data);
-    $('article').append(html1);
+    $('#ebook_vs_poche').append(html1);
 
-    /* Dessin des barres en fonction de la différence des prix ebook / poche */
+    Handlebars.registerHelper('each_by_diff_broch', function(data,options) {
+	    var output = '';
+	    var contextSorted = data.concat()
+	        .sort( function(a,b) { return a.diff_broche - b.diff_broche } );
+	    for(var i=0, j=contextSorted.length; i<j; i++) {
+	        output += options.fn(contextSorted[i]);
+	    }
 
-	$('.poche_oui').each(function() {
+	    return output;
+	});
+
+	var template2 = Handlebars.compile( $('#handlebars_template_2').html() );
+	$('#ebook_vs_broche').append( template2( data ) );    
+
+
+
+    /* Construction de la partie ebook / poche */
+
+	$('#ebook_vs_poche .entry_book').each(function() {
 		var diff_poche = $(this).attr('diff_poche');
 		if (diff_poche < 0) {
 
-			/* Si l'eBook est moins cher, on masque la barre à droite et les infos à gauche */
+			/* Si l'eBook est moins cher, on masque la barre à droite et les infos à gauche... */
 
 			$('.left .book_info',this).addClass('book_info_hidden');
+			$('.right .bar',this).addClass('bar_hidden');
+
+			/* ... on définit la largeur de la barre */
+
+			bar_width = ((0-diff_poche)*100)/13; 
+
+			/* ... on écrit le prix dans la puce */
+
 			diff_poche_abs = 0-diff_poche
 			$('.diff > div',this).html('-' + diff_poche_abs + '&nbsp;€');
-			$('.right .bar',this).addClass('bar_hidden');			
-			bar_width = ((0-diff_poche)*100)/13; 
+
+			/* On passe la puce en vert */
+
+			$('.diff',this).removeClass('diff_grey');			
+			$('.diff',this).addClass('diff_green');	
+
 		} else {
 
-			/* Si l'eBook est plus cher, on masque la barre à gauche et les infos à droite */
+			/* Si l'eBook est plus cher, on masque la barre à gauche et les infos à droite... */
 
 			$('.right .book_info',this).addClass('book_info_hidden');
-			$('.diff > div',this).html('+' + diff_poche + '&nbsp;€');
 			$('.left .bar',this).addClass('bar_hidden');
+
+			/* ... on définit la largeur de la barre */
+
 			bar_width = diff_poche*100/13;
+
+			/* ... on écrit le prix dans la puce */
+
+			$('.diff > div',this).html('+' + diff_poche + '&nbsp;€');
+
+			/* On passe la puce en rouge */
+
+			$('.diff',this).removeClass('diff_grey');			
+			$('.diff',this).addClass('diff_red');			
+
+
 		}
+		$('.bar',this).css('width', bar_width + '%');
+	});
+
+
+ /* Construction de la partie ebook / originale */
+
+	$('#ebook_vs_broche .entry_book').each(function() {
+		var diff_broche = $(this).attr('diff_broche');
+
+		/* On masque la barre à droite et les infos à gauche... */
+
+		$('.left .book_info',this).addClass('book_info_hidden');
+		$('.right .bar',this).addClass('bar_hidden');
+
+		/* ... on définit la largeur de la barre */
+
+		bar_width = ((0-diff_broche)*100)/17.5; 
+
+		/* ... on écrit le prix dans la puce */
+
+		diff_broche_abs = 0-diff_broche
+		$('.diff > div',this).html('-' + diff_broche_abs + '&nbsp;€');
+
+		/* On passe la puce en vert */
+
+		$('.diff',this).removeClass('diff_grey');			
+		$('.diff',this).addClass('diff_green');	
+
+	
+
 		$('.bar',this).css('width', bar_width + '%');
 	});
 
@@ -40,7 +111,8 @@ function showInfo() {
 
 	$('.show_more').click( function() {
  		current_id = $(this).parents('.entry_book').attr('id');
- 		$('#' + current_id + ' .more').toggleClass('more_visible'); 
+ 		current_section = $(this).parents('section').attr('id');
+ 		$('#' + current_section + ' #' + current_id + ' .more').toggleClass('more_visible'); 
  	});
 
     });
@@ -50,8 +122,5 @@ function showInfo() {
 
 $(document).ready( function() {
 	showInfo();
-
-
-
 
 });    
