@@ -23,7 +23,7 @@
   <body>
     <header>
     </header>   
-    <article style="width:580px;"> 
+    <article> 
       <section id="ebook_vs_poche">  
         <h2 class="first">Les prix des ebooks comparés au prix des poches</h2> 
         <p class="teaser">La plupart des livres étudiés coûtent plus cher en version électronique qu'en version poches.</p> 

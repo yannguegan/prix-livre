@@ -14,7 +14,7 @@ section {
 }
 section#ebook_vs_broche {
 	margin-top: 4em;
-}
+}s
 footer {
 
 }
@@ -236,3 +236,60 @@ h2.first {
 .transition_height {
 	transition: height 0.3s ease-in-out, padding 0.3s ease-in-out, margin 0.3s ease-in-out;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Calage mobile */
+
+
+@media screen and (max-width: 568px) {
+	
+	.diff div {
+		font-size: 0.8em;
+	}
+
+	.entry_book  .bar {
+		margin-top: 1em;
+		height: 18px;
+	}
+	.title, .author {
+		font-size: 0.85em;
+	}
+
+
+}
+
+@media screen and (max-width: 420px) {
+	
+	.diff div {
+		font-size: 0.6em;
+	}
+
+	.entry_book .bar {
+		margin-top: 0.7em;
+		height: 16px;
+	}
+	.title, .author {
+		font-size: 0.6em;
+	}
+
+
+}		
