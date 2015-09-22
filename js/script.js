@@ -22,7 +22,7 @@ function showInfo() {
 	Handlebars.registerHelper('each_by_diff_poch', function(data,options) {
 	    var output = '';
 	    var contextSorted = data.concat()
-	        .sort( function(a,b) { return b.diff_poche - a.diff_poche } );
+	        .sort( function(a,b) { return a.diff_poche - b.diff_poche } ).reverse();
 	    for(var i=0, j=contextSorted.length; i<j; i++) {
 	        output += options.fn(contextSorted[i]);
 	    }
@@ -33,10 +33,10 @@ function showInfo() {
     /* Ecriture des données présentes dans le fichier JSON dans le DOM */ 
 
 	var template1 = Handlebars.compile( $('#handlebars_template_1').html() );
-	$('#ebook_vs_poche').append( template1( data ) ); 
+	$('#ebook_vs_poche .list').append( template1( data ) ); 
 
 	var template2 = Handlebars.compile( $('#handlebars_template_2').html() );
-	$('#ebook_vs_broche').append( template2( data ) );     
+	$('#ebook_vs_broche .list').append( template2( data ) );     
 
 
 
@@ -58,12 +58,7 @@ function showInfo() {
 			/* ... on écrit le prix dans la puce */
 
 			diff_poche_abs = 0-diff_poche
-			$('.diff > div',this).html('-' + diff_poche_abs + '&nbsp;€');
-
-			/* On passe la puce en vert */
-
-			$('.diff',this).removeClass('diff_grey');			
-			$('.diff',this).addClass('diff_green');	
+			$('.diff > div',this).html('-' + diff_poche_abs + '€');
 
 		} else {
 
@@ -78,13 +73,25 @@ function showInfo() {
 
 			/* ... on écrit le prix dans la puce */
 
-			$('.diff > div',this).html('+' + diff_poche + '&nbsp;€');
+			$('.diff > div',this).html('+' + diff_poche + '€');
+
+	    }
+
+		if (diff_poche < 0) {
+
+			/* On passe la puce en vert */
+
+			$('.diff',this).removeClass('diff_grey');			
+			$('.diff',this).addClass('diff_green');	
+
+			} else { if(diff_poche >0) {
 
 			/* On passe la puce en rouge */
 
 			$('.diff',this).removeClass('diff_grey');			
-			$('.diff',this).addClass('diff_red');			
+			$('.diff',this).addClass('diff_red');	
 
+			}
 
 		}
 		$('.bar',this).css('width', bar_width + '%');

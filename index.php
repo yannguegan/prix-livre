@@ -23,12 +23,16 @@
   <body>
     <header>
     </header>   
-    <article style="width:766px;"> 
+    <article style="width:580px;"> 
       <section id="ebook_vs_poche">  
-        <h2>Les prix des ebooks comparés au prix des poches</h2>  
+        <h2 class="first">Les prix des ebooks comparés au prix des poches</h2> 
+        <p class="teaser">La plupart des livres étudiés coûtent plus cher en version électronique qu'en version poches.</p> 
+        <div class="list"></div> 
       </section>
       <section id="ebook_vs_broche">
-        <h2>Les prix des ebooks comparés au prix des éditions originales</h2>  
+        <h2>Les prix des ebooks comparés au prix des éditions originales</h2>
+        <p class="teaser">La plupart des livres étudiés coûtent moins cher en version électronique que dans leur édition papier originale, mais la remise varie beaucoup.</p>
+        <div class="list"></div>          
       </section> 
     </article>
     <footer>
@@ -48,7 +52,7 @@
                          <div class="prices">
                           <div>
                             Original ({{{editeur_broche}}})<br />
-                            Poche ({{{editeur_poche}}})<br />
+                            <span class="poche_{{{paru_poche}}}">Poche ({{{editeur_poche}}})<br /></span>
                             iBook<br />
                             Kindle<br />
                             Diff. ebook / original<br /> 
@@ -56,7 +60,7 @@
                           </div>
                           <div>
                             {{{prix_broche}}}&nbsp;€<br />
-                            {{{prix_poche}}}&nbsp;€<br />
+                            <span class="poche_{{{paru_poche}}}">{{{prix_poche}}}&nbsp;€<br /></span>
                             {{{prix_elec_apple}}}&nbsp;€<br />
                             {{{prix_elec_amazon}}}&nbsp;€<br />
                             {{{diff_broche_100}}}&nbsp;%<br />
@@ -79,10 +83,10 @@
                        <div class="title show_more">Livre&nbsp;: <span>{{{titre}}}</span> </div>   
                      </div>  
                      <div class="more transition_height">
-                         <div class="prices">
+                        <div class="prices">
                           <div>
                             Original ({{{editeur_broche}}})<br />
-                            Poche ({{{editeur_poche}}})<br />
+                            <span class="poche_{{{paru_poche}}}">Poche ({{{editeur_poche}}})<br /></span>
                             iBook<br />
                             Kindle<br />
                             Diff. ebook / original<br /> 
@@ -90,14 +94,14 @@
                           </div>
                           <div>
                             {{{prix_broche}}}&nbsp;€<br />
-                            {{{prix_poche}}}&nbsp;€<br />
+                            <span class="poche_{{{paru_poche}}}">{{{prix_poche}}}&nbsp;€<br /></span>
                             {{{prix_elec_apple}}}&nbsp;€<br />
                             {{{prix_elec_amazon}}}&nbsp;€<br />
                             {{{diff_broche_100}}}&nbsp;%<br />
                             {{{diff_poche_100}}}&nbsp;%
                           </div> 
-                         </div>
-                       </div> 
+                        </div>
+                     </div>
                    </div>
                 </div>
                 <div class="diff diff_grey"><div></div></div>
@@ -121,7 +125,7 @@
                        <div class="prices">
                         <div>
                           Original ({{{editeur_broche}}})<br />
-                          Poche ({{{editeur_poche}}})<br />
+                          <span class="poche_{{{paru_poche}}}">Poche ({{{editeur_poche}}})<br /></span>
                           iBook<br />
                           Kindle<br />
                           Diff. ebook / original<br /> 
@@ -129,7 +133,7 @@
                         </div>
                         <div>
                           {{{prix_broche}}}&nbsp;€<br />
-                          {{{prix_poche}}}&nbsp;€<br />
+                          <span class="poche_{{{paru_poche}}}">{{{prix_poche}}}&nbsp;€<br /></span>
                           {{{prix_elec_apple}}}&nbsp;€<br />
                           {{{prix_elec_amazon}}}&nbsp;€<br />
                           {{{diff_broche_100}}}&nbsp;%<br />
@@ -155,7 +159,7 @@
                        <div class="prices">
                         <div>
                           Original ({{{editeur_broche}}})<br />
-                          Poche ({{{editeur_poche}}})<br />
+                          <span class="poche_{{{paru_poche}}}">Poche ({{{editeur_poche}}})<br /></span>
                           iBook<br />
                           Kindle<br />
                           Diff. ebook / original<br /> 
@@ -163,7 +167,7 @@
                         </div>
                         <div>
                           {{{prix_broche}}}&nbsp;€<br />
-                          {{{prix_poche}}}&nbsp;€<br />
+                          <span class="poche_{{{paru_poche}}}">{{{prix_poche}}}&nbsp;€<br /></span>
                           {{{prix_elec_apple}}}&nbsp;€<br />
                           {{{prix_elec_amazon}}}&nbsp;€<br />
                           {{{diff_broche_100}}}&nbsp;%<br />
