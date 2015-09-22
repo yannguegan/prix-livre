@@ -4,12 +4,7 @@ function showInfo() {
 
 	$.getJSON('data.json', function(data) {
 
-	/* Ecriture des données présentes dans le fichier JSON dans le DOM */  
-
-    var source1 = $('#handlebars_template_1').html();    
-    var template1 = Handlebars.compile(source1);
-    var html1 = template1(data);
-    $('#ebook_vs_poche').append(html1);
+    /* Tri des données par diff de prix ebooks vs broché */
 
     Handlebars.registerHelper('each_by_diff_broch', function(data,options) {
 	    var output = '';
@@ -22,8 +17,26 @@ function showInfo() {
 	    return output;
 	});
 
+    /* Tri des données par diff de prix ebooks vs poche */	
+
+	Handlebars.registerHelper('each_by_diff_poch', function(data,options) {
+	    var output = '';
+	    var contextSorted = data.concat()
+	        .sort( function(a,b) { return b.diff_poche - a.diff_poche } );
+	    for(var i=0, j=contextSorted.length; i<j; i++) {
+	        output += options.fn(contextSorted[i]);
+	    }
+
+	    return output;
+	});
+
+    /* Ecriture des données présentes dans le fichier JSON dans le DOM */ 
+
+	var template1 = Handlebars.compile( $('#handlebars_template_1').html() );
+	$('#ebook_vs_poche').append( template1( data ) ); 
+
 	var template2 = Handlebars.compile( $('#handlebars_template_2').html() );
-	$('#ebook_vs_broche').append( template2( data ) );    
+	$('#ebook_vs_broche').append( template2( data ) );     
 
 
 

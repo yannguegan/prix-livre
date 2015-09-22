@@ -34,7 +34,7 @@
     <footer>
     </footer>
     <script id="handlebars_template_1" type="text/x-handlebars-template">
-            {{#each feed}}
+            {{#each_by_diff_poch feed}}
              {{#if auteur}}
              <div class="entry_book poche_{{{paru_poche}}}" id="{{{id}}}" diff_poche="{{{diff_poche}}}" diff_broche="{{{diff_broche}}}">
                 <div class="left">
@@ -104,7 +104,7 @@
              </div>
               
             {{/if}}
-           {{/each}}
+           {{/each_by_diff_poch}}
     </script>
     <script id="handlebars_template_2" type="text/x-handlebars-template">
           {{#each_by_diff_broch feed}}
