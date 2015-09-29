@@ -9,7 +9,7 @@ function showInfo() {
     Handlebars.registerHelper('each_by_diff_broch', function(data,options) {
 	    var output = '';
 	    var contextSorted = data.concat()
-	        .sort( function(a,b) { return a.diff_broche - b.diff_broche } );
+	        .sort( function(a,b) { return a.diff_broche - b.diff_broche } ).reverse();
 	    for(var i=0, j=contextSorted.length; i<j; i++) {
 	        output += options.fn(contextSorted[i]);
 	    }
@@ -38,7 +38,10 @@ function showInfo() {
 	var template2 = Handlebars.compile( $('#handlebars_template_2').html() );
 	$('#ebook_vs_broche .list').append( template2( data ) );     
 
+	/* Scroller plus joli 
 
+	$('.list').customScroll(); */
+	
 
     /* Construction de la partie ebook / poche */
 
@@ -98,7 +101,7 @@ function showInfo() {
 	});
 
 
- /* Construction de la partie ebook / originale */
+    /* Construction de la partie ebook / originale */
 
 	$('#ebook_vs_broche .entry_book').each(function() {
 		var diff_broche = $(this).attr('diff_broche');
@@ -127,6 +130,18 @@ function showInfo() {
 		$('.bar',this).css('width', bar_width + '%');
 	});
 
+	/* Selon l'URL on affiche/masque une partie */
+
+	var currenturl = document.location.search;
+	if (typeof(currenturl) != 'undefined' && currenturl != '' && currenturl != 'undefined' && currenturl != undefined) {
+		var section_active = currenturl.replace('?section=','');
+		$('section').hide(0);
+		$('#' + section_active).show(0);
+	}	
+
+	
+
+
 	/* Au clic sur la class show_more on affiche les infos détaillées  */
 
 	$('.show_more').click( function() {
@@ -135,12 +150,24 @@ function showInfo() {
  		$('#' + current_section + ' #' + current_id + ' .more').toggleClass('more_visible'); 
  	});
 
-    });
+   });
+
+
+
+
   
 };
 
 
 $(document).ready( function() {
+
 	showInfo();
+
+	/* On fixe la largeur totale quand on est en local */
+
+    if (document.domain == "localhost") {
+    	$('article').css('width', '480px');
+    }
+
 
 });    
