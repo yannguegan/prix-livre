@@ -26,7 +26,7 @@
         <div class="list" id="list_poche"></div> 
       </section>
       <section id="ebook_vs_broche">
-        <h2>Comparé à l'édition originale, un rabais très variable pour la version ebook.</h2>
+        <h2>Comparé à l'édition originale, un rabais très variable pour la version ebook</h2>
         <p class="teaser">La remise varie entre -17% et -68% pour les 52 livres étudiés, pour une moyenne de -41%.</p>
         <div class="list" id="list_broche"></div>          
       </section> 

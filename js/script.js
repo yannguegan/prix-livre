@@ -38,10 +38,6 @@ function showInfo() {
 	var template2 = Handlebars.compile( $('#handlebars_template_2').html() );
 	$('#ebook_vs_broche .list').append( template2( data ) );     
 
-	/* Scroller plus joli 
-
-	$('.list').customScroll(); */
-	
 
     /* Construction de la partie ebook / poche */
 
@@ -137,6 +133,10 @@ function showInfo() {
 		var section_active = currenturl.replace('?section=','');
 		$('section').hide(0);
 		$('#' + section_active).show(0);
+
+	   /* Scroller plus joli  */
+
+		$('.list').customScroll();
 	}	
 
 	
